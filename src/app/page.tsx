@@ -3,6 +3,7 @@
 import { motion, useInView, useMotionValue, useSpring } from 'framer-motion';
 import { Github, ExternalLink, Mail, Linkedin, Twitter } from 'lucide-react';
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 // Animated Counter Component
 function AnimatedCounter({ value, suffix = "" }: { value: number; suffix?: string }) {
@@ -34,39 +35,47 @@ function AnimatedCounter({ value, suffix = "" }: { value: number; suffix?: strin
 const projects = [
   {
     id: 1,
-    title: "Project One",
-    description: "A modern web application built with Next.js and TypeScript",
-    image: "/projects/iradsys-dashboard.png",
-    tags: ["Next.js", "TypeScript", "Tailwind"],
-    github: "https://github.com/vukpapic/project-one",
-    live: "https://project-one.vercel.app"
+    title: "IradSys",
+    description: "A web application for visualizing and monitoring gamma radiation in real time on trucks",
+    image: "/projects/iradsys.png",
+    tags: ["PHP", "Angular", "MySql"],
+    github: "",
+    live: "",
+    video: "", // Add video URL when available
+    slug: "iradsys"
   },
   {
     id: 2,
-    title: "Project Two",
-    description: "Mobile-first e-commerce platform with sleek design",
-    image: "/projects/time-track-main.png",
-    tags: ["React", "Node.js", "MongoDB"],
+    title: "Tick",
+    description: "A time tracking tool for freelancers and agencies with advanced features",
+    image: "/projects/tick.png",
+    tags: ["Angular", "Nestjs", "PostgreSQL","Prisma"],
     github: "https://github.com/vukpapic/project-two",
-    live: "https://project-two.vercel.app"
+    live: "",
+    video: "", // Add video URL when available
+    slug: "tick"
   },
   {
     id: 3,
     title: "eCitera",
     description: "Medical management app for nutrition and health with smart calculations",
-    image: "/projects/ecitera-pp-dashboard.png",
+    image: "/projects/ecitera.png",
     tags: ["Angular", "PHP", "SQLServer"],
     github: "",
-    live: "https://project-three.vercel.app"
+    live: "",
+    video: "", // Add video URL when available
+    slug: "ecitera"
   },
   {
     id: 4,
-    title: "Project Four",
-    description: "AI-powered productivity app with modern interface",
-    image: "/projects/project-4.jpg",
-    tags: ["Next.js", "AI", "Prisma"],
-    github: "https://github.com/vukpapic/project-four",
-    live: "https://project-four.vercel.app"
+    title: "Sledat",
+    description: "Fleet management system with features for tracking and managing vehicles",
+    image: "/projects/sledat.png",
+    tags: [ "Angular", "NestJS", "MongoDB"],
+    github: "",
+    live: "https://sledat.com",
+    video: "", // Add video URL when available
+    slug: "sledat"
   }
 ];
 
@@ -250,9 +259,9 @@ export default function Home() {
             className="mt-12 bg-gradient-to-r from-blue-50 to-stone-50 dark:from-blue-900/20 dark:to-stone-700 rounded-2xl p-8"
           >
             <div className="text-center">
-              <div className="text-4xl text-blue-500 mb-4">"</div>
+              <div className="text-4xl text-blue-500 mb-4">&ldquo;</div>
               <p className="text-lg text-stone-700 dark:text-stone-300 mb-6 italic">
-                "After going through 4 different freelancers to upgrade out custom built multimodal freight Calculator, we found Vuk. His understanding of the task, knowledge and expertise was like no other. He made everything look like a breeze. Thank you"
+                &ldquo;After going through 4 different freelancers to upgrade out custom built multimodal freight Calculator, we found Vuk. His understanding of the task, knowledge and expertise was like no other. He made everything look like a breeze. Thank you&rdquo;
               </p>
               <div className="flex items-center justify-center space-x-2">
                 <div className="flex text-yellow-400">
@@ -317,17 +326,21 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -5 }}
-                className="group bg-white dark:bg-stone-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
+                className="group cursor-pointer"
+                onClick={() => window.location.href = `/projects/${project.slug}`}
               >
-                <div className="aspect-square bg-gradient-to-br from-stone-100 to-stone-200 dark:from-stone-700 dark:to-stone-600 relative overflow-hidden">
+                {/* Project Image */}
+                <div className="aspect-square rounded-2xl overflow-hidden mb-4">
                   {project.image ? (
-                    <img 
+                    <Image 
                       src={project.image} 
                       alt={project.title}
+                      width={400}
+                      height={400}
                       className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-300 p-4"
                     />
                   ) : (
-                    <div className="absolute inset-0 flex items-center justify-center text-stone-400 dark:text-stone-500">
+                    <div className="w-full h-full flex items-center justify-center text-stone-400 dark:text-stone-500 bg-stone-100 dark:bg-stone-700">
                       <div className="text-center">
                         <div className="w-16 h-16 mx-auto mb-4 bg-stone-300 dark:bg-stone-600 rounded-lg flex items-center justify-center">
                           📱
@@ -337,40 +350,11 @@ export default function Home() {
                     </div>
                   )}
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-stone-900 dark:text-stone-100 mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-stone-600 dark:text-stone-400 mb-4">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 text-sm rounded-full"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex space-x-4">
-                    <a
-                      href={project.github}
-                      className="flex items-center text-stone-600 dark:text-stone-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                    >
-                      <Github className="w-5 h-5 mr-2" />
-                      Source
-                    </a>
-                    <a
-                      href={project.live}
-                      className="flex items-center text-stone-600 dark:text-stone-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                    >
-                      <ExternalLink className="w-5 h-5 mr-2" />
-                      Preview
-                    </a>
-                  </div>
-                </div>
+                
+                {/* Project Name */}
+                <h3 className="text-xl font-semibold text-stone-900 dark:text-stone-100 text-center group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  {project.title}
+                </h3>
               </motion.div>
             ))}
           </div>
@@ -447,13 +431,13 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <p className="text-lg text-stone-600 dark:text-stone-400 mb-6">
-                Hi, I'm Vuk Papić, a passionate Web and Mobile Developer with a knack for 
+                Hi, I&apos;m Vuk Papić, a passionate Web and Mobile Developer with a knack for 
                 crafting seamless digital experiences. With a strong background in both frontend 
                 and backend development, I thrive in the intersection where creativity meets technology.
               </p>
               <p className="text-lg text-stone-600 dark:text-stone-400 mb-8">
-                Over the years, I've honed my skills in building robust, user-friendly applications 
-                that not only meet the needs of users but also push the boundaries of what's possible. 
+                Over the years, I&apos;ve honed my skills in building robust, user-friendly applications 
+                that not only meet the needs of users but also push the boundaries of what&apos;s possible. 
                 My projects range from innovative web applications to responsive designs, all with a 
                 focus on performance, security, and scalability.
               </p>
@@ -473,10 +457,11 @@ export default function Home() {
               viewport={{ once: true }}
               className="aspect-square bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800 rounded-2xl overflow-hidden flex items-center justify-center"
             >
-              {/* Replace "/profile/vuk-papic.jpg" with your actual photo path */}
-              <img 
+              <Image 
                 src="/profile/IMG_5212.jpg" 
                 alt="Vuk Papić"
+                width={400}
+                height={400}
                 className="w-full h-full object-cover"
                 onError={(e) => {
                   // Fallback if image doesn't exist
@@ -509,7 +494,7 @@ export default function Home() {
               Let's Work Together
             </h2>
             <p className="text-xl text-stone-600 dark:text-stone-400 mb-8 max-w-2xl mx-auto">
-              Have a project in mind? I'd love to hear about it. Let's create something amazing together.
+              Have a project in mind? I&apos;d love to hear about it. Let&apos;s create something amazing together.
             </p>
             <motion.a
               href="mailto:your.email@example.com"
