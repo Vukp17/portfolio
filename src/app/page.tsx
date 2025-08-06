@@ -1,8 +1,8 @@
 'use client';
 
 import { motion, useInView, useMotionValue, useSpring } from 'framer-motion';
-import { Github, Mail, Linkedin } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { Github, Mail, Linkedin, Menu, X } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
 // Animated Counter Component
@@ -11,8 +11,8 @@ function AnimatedCounter({ value, suffix = "" }: { value: number; suffix?: strin
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const motionValue = useMotionValue(0);
   const springValue = useSpring(motionValue, {
-    damping: 60,
-    stiffness: 100,
+    damping: 30,
+    stiffness: 200,
   });
 
   useEffect(() => {
@@ -111,6 +111,8 @@ const experience = [
 ];
 
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-stone-50 to-stone-100 dark:from-stone-900 dark:to-stone-800">
       {/* Navigation */}
@@ -124,10 +126,12 @@ export default function Home() {
             >
               Vuk Papić
             </motion.h1>
+            
+            {/* Desktop Menu */}
             <motion.div 
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="flex space-x-8"
+              className="hidden md:flex space-x-8"
             >
               <a href="#about" className="text-stone-600 dark:text-stone-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
               <a href="#services" className="text-stone-600 dark:text-stone-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Services</a>
@@ -135,7 +139,66 @@ export default function Home() {
               <a href="#experience" className="text-stone-600 dark:text-stone-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Experience</a>
               <a href="#contact" className="text-stone-600 dark:text-stone-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
             </motion.div>
+
+            {/* Mobile Menu Button */}
+            <motion.button
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="md:hidden p-2 text-stone-600 dark:text-stone-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </motion.button>
           </div>
+
+          {/* Mobile Menu */}
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ 
+              opacity: isMenuOpen ? 1 : 0, 
+              height: isMenuOpen ? 'auto' : 0 
+            }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden overflow-hidden"
+          >
+            <div className="py-4 space-y-4">
+              <a 
+                href="#about" 
+                className="block text-stone-600 dark:text-stone-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                About
+              </a>
+              <a 
+                href="#services" 
+                className="block text-stone-600 dark:text-stone-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Services
+              </a>
+              <a 
+                href="#projects" 
+                className="block text-stone-600 dark:text-stone-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Projects
+              </a>
+              <a 
+                href="#experience" 
+                className="block text-stone-600 dark:text-stone-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Experience
+              </a>
+              <a 
+                href="#contact" 
+                className="block text-stone-600 dark:text-stone-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Contact
+              </a>
+            </div>
+          </motion.div>
         </div>
       </nav>
 
@@ -294,7 +357,7 @@ export default function Home() {
                     <span key={i} className="text-lg">★</span>
                   ))}
                 </div>
-                <span className="text-stone-600 dark:text-stone-400 ml-3"> — Kyle Ram Containezone</span>
+                <span className="text-stone-600 dark:text-stone-400"> — Kyle Ram Containezone</span>
               </div>
             </div>
           </motion.div>
@@ -663,7 +726,7 @@ export default function Home() {
               Have a project in mind? I&apos;d love to hear about it. Let&apos;s create something amazing together.
             </p>
             <motion.a
-              href="mailto:your.email@example.com"
+              href="mailto:paicvuk17@gmail.com"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center px-8 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors font-medium"
