@@ -42,7 +42,8 @@ const projects = [
     github: "",
     live: "",
     video: "", // Add video URL when available
-    slug: "iradsys"
+    slug: "iradsys",
+    backgroundColor: "#ffffff"
   },
   {
     id: 2,
@@ -53,7 +54,8 @@ const projects = [
     github: "https://github.com/vukpapic/project-two",
     live: "",
     video: "", // Add video URL when available
-    slug: "tick"
+    slug: "tick",
+    backgroundColor: "#ffffff"
   },
   {
     id: 3,
@@ -64,7 +66,8 @@ const projects = [
     github: "",
     live: "",
     video: "", // Add video URL when available
-    slug: "ecitera"
+    slug: "ecitera",
+    backgroundColor: "#d9d9d9"
   },
   {
     id: 4,
@@ -75,7 +78,8 @@ const projects = [
     github: "",
     live: "https://sledat.com",
     video: "", // Add video URL when available
-    slug: "sledat"
+    slug: "sledat",
+    backgroundColor: "#d9d9d9"
   }
 ];
 
@@ -126,6 +130,7 @@ export default function Home() {
               className="flex space-x-8"
             >
               <a href="#about" className="text-stone-600 dark:text-stone-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
+              <a href="#services" className="text-stone-600 dark:text-stone-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Services</a>
               <a href="#projects" className="text-stone-600 dark:text-stone-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a>
               <a href="#experience" className="text-stone-600 dark:text-stone-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Experience</a>
               <a href="#contact" className="text-stone-600 dark:text-stone-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
@@ -135,8 +140,28 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6">
-        <div className="max-w-6xl mx-auto">
+      <section className="pt-32 pb-20 px-6 relative overflow-hidden">
+        {/* Animated Grid Background */}
+        <div className="absolute inset-0 opacity-30 dark:opacity-20">
+          <div className="grid grid-cols-12 md:grid-cols-20 lg:grid-cols-24 gap-1 h-full">
+            {Array.from({ length: 288 }, (_, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0, 0.3, 0] }}
+                transition={{
+                  duration: 3,
+                  delay: (i * 0.01) + Math.random() * 2,
+                  repeat: Infinity,
+                  repeatDelay: Math.random() * 5,
+                }}
+                className="bg-blue-500 dark:bg-blue-400 aspect-square rounded-sm"
+              />
+            ))}
+          </div>
+        </div>
+        
+        <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -326,11 +351,12 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -5 }}
-                className="group cursor-pointer"
+                className="group cursor-pointer flex flex-col h-[calc(100vw-3rem)] md:h-[calc(50vw-5rem)] max-h-[400px] rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                style={{ backgroundColor: project.backgroundColor }}
                 onClick={() => window.location.href = `/projects/${project.slug}`}
               >
                 {/* Project Image */}
-                <div className="aspect-square rounded-2xl overflow-hidden mb-4">
+                <div className="aspect-square rounded-2xl overflow-hidden mb-4 flex-1">
                   {project.image ? (
                     <Image 
                       src={project.image} 
@@ -352,7 +378,7 @@ export default function Home() {
                 </div>
                 
                 {/* Project Name */}
-                <h3 className="text-xl font-semibold text-stone-900 dark:text-stone-100 text-center group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                <h3 className="text-xl font-semibold text-stone-900 dark:text-stone-100 text-center group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors h-[2.5rem] flex items-center justify-center flex-shrink-0">
                   {project.title}
                 </h3>
               </motion.div>
@@ -405,6 +431,146 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="py-20 px-6 bg-gradient-to-br from-blue-50 to-stone-50 dark:from-blue-900/20 dark:to-stone-800">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-light text-stone-900 dark:text-stone-100 mb-4">
+              What Services Do I Offer?
+            </h2>
+            <p className="text-stone-600 dark:text-stone-400 max-w-2xl mx-auto">
+              From concept to deployment, I provide comprehensive development services 
+              tailored to bring your ideas to life with modern technologies and best practices.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {[
+              {
+                iconBg: "linear-gradient(135deg, #FF6B6B, #FF8E8E)",
+                iconColor: "#fff",
+                icon: (
+                  <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                  </svg>
+                ),
+                title: "Full Stack Development",
+                description: "I do full-stack development using technologies like React and React Native and Spring Boot for robust backend applications. I focus on creating efficient, high-performance applications with seamless user experiences."
+              },
+              {
+                iconBg: "linear-gradient(135deg, #4ECDC4, #66D9D2)",
+                iconColor: "#fff",
+                icon: (
+                  <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+                  </svg>
+                ),
+                title: "Artificial Intelligence",
+                description: "I develop AI solutions, including predictive models that analyze data and provide valuable insights. My work involves machine learning techniques to optimize predictions and enhance decision-making."
+              },
+              {
+                iconBg: "linear-gradient(135deg, #45B7D1, #6BC5E8)",
+                iconColor: "#fff",
+                icon: (
+                  <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/>
+                  </svg>
+                ),
+                title: "Cloud & Deployment",
+                description: "I do deployment of applications to scalable cloud environments, ensuring high performance and reliability. I optimize the deployment process to maintain seamless availability for production applications."
+              },
+              {
+                iconBg: "linear-gradient(135deg, #96CEB4, #FFEAA7)",
+                iconColor: "#fff",
+                icon: (
+                  <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                  </svg>
+                ),
+                title: "Custom ERP Solutions",
+                description: "I build tailored enterprise resource planning solutions designed to streamline business processes and improve efficiency. My ERP systems are customized to meet specific organizational needs and workflows."
+              }
+            ].map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                whileHover={{ 
+                  y: -8,
+                  transition: { duration: 0.3 }
+                }}
+                className="group relative"
+              >
+                <div className="bg-white dark:bg-stone-700 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-stone-100 dark:border-stone-600 h-full">
+                  {/* Icon Circle */}
+                  <div className="flex justify-center mb-8">
+                    <motion.div
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.3 }}
+                      className="w-20 h-20 rounded-full flex items-center justify-center shadow-lg"
+                      style={{ background: service.iconBg }}
+                    >
+                      <div style={{ color: service.iconColor }}>
+                        {service.icon}
+                      </div>
+                    </motion.div>
+                  </div>
+                  
+                  {/* Title */}
+                  <h3 className="text-2xl font-bold text-stone-900 dark:text-stone-100 mb-6 text-center group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    {service.title}
+                  </h3>
+                  
+                  {/* Description */}
+                  <p className="text-stone-600 dark:text-stone-400 leading-relaxed text-center">
+                    {service.description}
+                  </p>
+                  
+                  {/* Subtle hover effect */}
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Call to Action */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mt-16"
+          >
+            <p className="text-lg text-stone-600 dark:text-stone-400 mb-6">
+              Ready to start your next project?
+            </p>
+            <motion.a
+              href="#contact"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center px-8 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors font-medium shadow-lg hover:shadow-xl"
+            >
+              Let's Discuss Your Project
+              <motion.span
+                animate={{ x: [0, 5, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+                className="ml-2"
+              >
+                →
+              </motion.span>
+            </motion.a>
+          </motion.div>
         </div>
       </section>
 

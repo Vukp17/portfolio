@@ -1,9 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, ArrowLeft, Play } from 'lucide-react';
+import { Github, ExternalLink, ArrowLeft, Play, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { useState } from 'react';
 
 const projects = [
   {
@@ -14,8 +15,7 @@ const projects = [
     image: "/projects/iradsys.png",
     images: ["/projects/iradsys.png", "/projects/iradsys-dashboard.png", "/projects/iradsys-list.png"],
     tags: ["PHP", "Angular", "MySql"],
-    github: "https://github.com/vukpapic/project-one",
-    live: "https://project-one.vercel.app",
+    live: "https://iradsys.net",
     video: "", // Add video URL when available
     slug: "iradsys",
     features: [
@@ -34,9 +34,8 @@ const projects = [
     image: "/projects/tick.png",
     images: ["/projects/tick.png", "/projects/time-track-main.png", "/projects/time-track-login.png", "/projects/time-track-project.png"],
     tags: ["Angular", "Nestjs", "PostgreSQL","Prisma"],
-    github: "https://github.com/vukpapic/project-two",
-    live: "https://project-two.vercel.app",
-    video: "", // Add video URL when available
+    live: "https://88.198.106.21/",
+    video: "/videos/tick.mp4", // Add video URL when available
     slug: "tick",
     features: [
       "Advanced time tracking",
@@ -54,9 +53,6 @@ const projects = [
     image: "/projects/ecitera.png",
     images: ["/projects/ecitera.png", "/projects/ecitera-pp-dashboard.png", "/projects/ecitera-list.png"],
     tags: ["Angular", "PHP", "SQLServer"],
-    github: "",
-    live: "https://project-three.vercel.app",
-    video: "", // Add video URL when available
     slug: "ecitera",
     features: [
       "Smart nutrition calculations",
@@ -74,7 +70,6 @@ const projects = [
     image: "/projects/sledat.png",
     images: ["/projects/sledat.png"],
     tags: [ "Angular", "NestJS", "MongoDB"],
-    github: "",
     live: "https://sledat.com",
     video: "", // Add video URL when available
     slug: "sledat",
@@ -92,8 +87,21 @@ export default function ProjectPage() {
   const params = useParams();
   const router = useRouter();
   const slug = params.slug as string;
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
   const project = projects.find(p => p.slug === slug);
+  
+  const nextImage = () => {
+    if (project) {
+      setCurrentImageIndex((prev) => (prev + 1) % project.images.length);
+    }
+  };
+
+  const prevImage = () => {
+    if (project) {
+      setCurrentImageIndex((prev) => (prev - 1 + project.images.length) % project.images.length);
+    }
+  };
   
   if (!project) {
     return (
@@ -156,19 +164,6 @@ export default function ProjectPage() {
             
             {/* Project Links */}
             <div className="flex justify-center space-x-6 mb-8">
-              {project.github && (
-                <motion.a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center px-6 py-3 bg-stone-900 dark:bg-stone-700 text-white rounded-full hover:bg-stone-800 dark:hover:bg-stone-600 transition-colors font-medium"
-                >
-                  <Github className="w-5 h-5 mr-2" />
-                  View Source
-                </motion.a>
-              )}
               {project.live && (
                 <motion.a
                   href={project.live}
@@ -198,17 +193,17 @@ export default function ProjectPage() {
           </motion.div>
 
           {/* Project Walkthrough Video Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-16"
-          >
-            <h2 className="text-3xl font-light text-stone-900 dark:text-stone-100 mb-8 text-center">
-              Project Walkthrough
-            </h2>
-            <div className="bg-white dark:bg-stone-800 rounded-2xl overflow-hidden shadow-lg">
-              {project.video ? (
+          {project.video && (
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="mb-16"
+            >
+              <h2 className="text-3xl font-light text-stone-900 dark:text-stone-100 mb-8 text-center">
+                Project Walkthrough
+              </h2>
+              <div className="bg-white dark:bg-stone-800 rounded-2xl overflow-hidden shadow-lg">
                 <div className="aspect-video">
                   <iframe 
                     src={project.video}
@@ -217,17 +212,9 @@ export default function ProjectPage() {
                     title={`${project.title} Walkthrough`}
                   />
                 </div>
-              ) : (
-                <div className="aspect-video bg-gradient-to-br from-stone-100 to-stone-200 dark:from-stone-700 dark:to-stone-600 flex items-center justify-center">
-                  <div className="text-center text-stone-500 dark:text-stone-400">
-                    <Play className="w-16 h-16 mx-auto mb-4" />
-                    <p className="text-lg font-medium mb-2">Video Coming Soon</p>
-                    <p className="text-sm">Project walkthrough video will be available here</p>
-                  </div>
-                </div>
-              )}
-            </div>
-          </motion.div>
+              </div>
+            </motion.div>
+          )}
 
           {/* Project Images */}
           <motion.div
@@ -239,25 +226,72 @@ export default function ProjectPage() {
             <h2 className="text-3xl font-light text-stone-900 dark:text-stone-100 mb-8 text-center">
               Screenshots
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {project.images.map((image, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white dark:bg-stone-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
-                >
+            
+            {/* Main Image Display */}
+            <div className="relative max-w-4xl mx-auto mb-8">
+              <div className="bg-white dark:bg-stone-800 rounded-2xl overflow-hidden shadow-lg">
+                <div className="relative aspect-video">
                   <Image 
-                    src={image} 
-                    alt={`${project.title} screenshot ${index + 1}`}
-                    width={400}
-                    height={256}
-                    className="w-full h-64 object-contain object-center p-4"
+                    src={project.images[currentImageIndex]} 
+                    alt={`${project.title} screenshot ${currentImageIndex + 1}`}
+                    fill
+                    className="object-contain p-4"
                   />
-                </motion.div>
-              ))}
+                  
+                  {/* Navigation Arrows */}
+                  {project.images.length > 1 && (
+                    <>
+                      <button
+                        onClick={prevImage}
+                        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-all duration-200"
+                      >
+                        <ChevronLeft className="w-6 h-6" />
+                      </button>
+                      <button
+                        onClick={nextImage}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-all duration-200"
+                      >
+                        <ChevronRight className="w-6 h-6" />
+                      </button>
+                    </>
+                  )}
+                </div>
+              </div>
+              
+              {/* Image Counter */}
+              {project.images.length > 1 && (
+                <div className="text-center mt-4">
+                  <span className="text-stone-600 dark:text-stone-400">
+                    {currentImageIndex + 1} of {project.images.length}
+                  </span>
+                </div>
+              )}
             </div>
+
+            {/* Thumbnail Navigation */}
+            {project.images.length > 1 && (
+              <div className="flex justify-center gap-4 overflow-x-auto pb-4">
+                {project.images.map((image, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentImageIndex(index)}
+                    className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${
+                      index === currentImageIndex
+                        ? 'border-blue-500 scale-105'
+                        : 'border-stone-300 dark:border-stone-600 hover:border-blue-400'
+                    }`}
+                  >
+                    <Image 
+                      src={image} 
+                      alt={`${project.title} thumbnail ${index + 1}`}
+                      width={80}
+                      height={80}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
           </motion.div>
 
           {/* Features */}
