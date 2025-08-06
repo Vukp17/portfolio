@@ -491,7 +491,7 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl font-light text-stone-900 dark:text-stone-100 mb-4">
-              Let's Work Together
+              Let&apos;s Work Together
             </h2>
             <p className="text-xl text-stone-600 dark:text-stone-400 mb-8 max-w-2xl mx-auto">
               Have a project in mind? I&apos;d love to hear about it. Let&apos;s create something amazing together.
@@ -513,7 +513,7 @@ export default function Home() {
       <footer className="py-8 px-6 border-t border-stone-200 dark:border-stone-700">
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-stone-600 dark:text-stone-400">
-            © 2025 Vuk Papić. Designed & Developed with ❤️
+            © 2025 Vuk Papić. Designed & Developed
           </p>
         </div>
       </footer>
