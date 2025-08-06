@@ -61,13 +61,13 @@ const projects = [
     id: 3,
     title: "eCitera",
     description: "Medical management app for nutrition and health with smart calculations",
-    image: "/projects/ecitera.png",
+    image: "/projects/ecitera2.png",
     tags: ["Angular", "PHP", "SQLServer"],
     github: "",
     live: "",
     video: "", // Add video URL when available
     slug: "ecitera",
-    backgroundColor: "#d9d9d9"
+    backgroundColor: "#ffffff"
   },
   {
     id: 4,
