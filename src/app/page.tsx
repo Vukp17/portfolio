@@ -414,7 +414,7 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -5 }}
-                className="group cursor-pointer flex flex-col h-[calc(100vw-3rem)] md:h-[calc(50vw-5rem)] max-h-[400px] rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                className="group cursor-pointer flex flex-col h-[calc(100vw-3rem)] md:h-[calc(50vw-5rem)] max-h-[400px] rounded-3xl p-6 border border-stone-200 dark:border-stone-600 hover:border-blue-300 dark:hover:border-blue-500 transition-all duration-300"
                 style={{ backgroundColor: project.backgroundColor }}
                 onClick={() => window.location.href = `/projects/${project.slug}`}
               >
