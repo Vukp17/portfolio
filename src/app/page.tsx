@@ -561,7 +561,7 @@ export default function Home() {
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center px-8 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors font-medium shadow-lg hover:shadow-xl"
             >
-              Let's Discuss Your Project
+              Let&apos;s Discuss Your Project
               <motion.span
                 animate={{ x: [0, 5, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
