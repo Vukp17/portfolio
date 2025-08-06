@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Github, ExternalLink, ArrowLeft, Play } from 'lucide-react';
 import { useParams, useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const projects = [
   {
@@ -247,9 +248,11 @@ export default function ProjectPage() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="bg-white dark:bg-stone-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
                 >
-                  <img 
+                  <Image 
                     src={image} 
                     alt={`${project.title} screenshot ${index + 1}`}
+                    width={400}
+                    height={256}
                     className="w-full h-64 object-contain object-center p-4"
                   />
                 </motion.div>
@@ -296,7 +299,7 @@ export default function ProjectPage() {
               Interested in Similar Work?
             </h2>
             <p className="text-stone-600 dark:text-stone-400 mb-8 max-w-2xl mx-auto">
-              I'd love to help bring your ideas to life. Let's discuss your next project.
+              I&apos;d love to help bring your ideas to life. Let&apos;s discuss your next project.
             </p>
             <motion.a
               href="mailto:your.email@example.com"

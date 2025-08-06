@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useInView, useMotionValue, useSpring } from 'framer-motion';
-import { Github, ExternalLink, Mail, Linkedin, Twitter } from 'lucide-react';
+import { Github, Mail, Linkedin } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 
