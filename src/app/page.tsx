@@ -50,7 +50,7 @@ const projects = [
     title: "Tick",
     description: "A time tracking tool for freelancers and agencies with advanced features",
     image: "/projects/tick.png",
-    tags: ["Angular", "Nestjs", "PostgreSQL","Prisma"],
+    tags: ["Angular", "Nestjs", "PostgreSQL", "Prisma"],
     github: "https://github.com/vukpapic/project-two",
     live: "",
     video: "", // Add video URL when available
@@ -74,7 +74,7 @@ const projects = [
     title: "Sledat",
     description: "Fleet management system with features for tracking and managing vehicles",
     image: "/projects/sledat.png",
-    tags: [ "Angular", "NestJS", "MongoDB"],
+    tags: ["Angular", "NestJS", "MongoDB"],
     github: "",
     live: "https://sledat.com",
     video: "", // Add video URL when available
@@ -119,16 +119,16 @@ export default function Home() {
       <nav className="fixed top-0 w-full z-50 bg-white/80 dark:bg-stone-900/80 backdrop-blur-sm border-b border-stone-200 dark:border-stone-700">
         <div className="max-w-6xl mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               className="text-xl font-semibold text-stone-900 dark:text-stone-100"
             >
               Vuk Papić
             </motion.h1>
-            
+
             {/* Desktop Menu */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               className="hidden md:flex space-x-8"
@@ -154,44 +154,44 @@ export default function Home() {
           {/* Mobile Menu */}
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ 
-              opacity: isMenuOpen ? 1 : 0, 
-              height: isMenuOpen ? 'auto' : 0 
+            animate={{
+              opacity: isMenuOpen ? 1 : 0,
+              height: isMenuOpen ? 'auto' : 0
             }}
             transition={{ duration: 0.3 }}
             className="md:hidden overflow-hidden"
           >
             <div className="py-4 space-y-4">
-              <a 
-                href="#about" 
+              <a
+                href="#about"
                 className="block text-stone-600 dark:text-stone-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 About
               </a>
-              <a 
-                href="#services" 
+              <a
+                href="#services"
                 className="block text-stone-600 dark:text-stone-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Services
               </a>
-              <a 
-                href="#projects" 
+              <a
+                href="#projects"
                 className="block text-stone-600 dark:text-stone-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Projects
               </a>
-              <a 
-                href="#experience" 
+              <a
+                href="#experience"
                 className="block text-stone-600 dark:text-stone-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Experience
               </a>
-              <a 
-                href="#contact" 
+              <a
+                href="#contact"
                 className="block text-stone-600 dark:text-stone-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -223,7 +223,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-        
+
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -237,10 +237,10 @@ export default function Home() {
               </div>
             </div>
             <h1 className="text-5xl md:text-7xl font-light text-stone-900 dark:text-stone-100 mb-6">
-             Full-stack Developer
+              Full-stack Developer
             </h1>
             <p className="text-xl text-stone-600 dark:text-stone-400 max-w-2xl mx-auto mb-8">
-              Developer based in Europe. I specialize in UI design, web and mobile 
+              Developer based in Europe. I specialize in UI design, web and mobile
               application development and maintenance.
             </p>
             <motion.a
@@ -379,7 +379,7 @@ export default function Home() {
               className="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors font-medium"
             >
               <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3.006-2.439-5.458-5.439-5.458z"/>
+                <path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3.006-2.439-5.458-5.439-5.458z" />
               </svg>
               View Upwork Profile
             </motion.a>
@@ -421,8 +421,8 @@ export default function Home() {
                 {/* Project Image */}
                 <div className="aspect-square rounded-2xl overflow-hidden mb-4 flex-1">
                   {project.image ? (
-                    <Image 
-                      src={project.image} 
+                    <Image
+                      src={project.image}
                       alt={project.title}
                       width={400}
                       height={400}
@@ -439,7 +439,7 @@ export default function Home() {
                     </div>
                   )}
                 </div>
-                
+
                 {/* Project Name */}
                 <h3 className="text-xl font-semibold text-stone-900 dark:text-stone-100 text-center group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors h-[2.5rem] flex items-center justify-center flex-shrink-0">
                   {project.title}
@@ -511,7 +511,7 @@ export default function Home() {
               What Services Do I Offer?
             </h2>
             <p className="text-stone-600 dark:text-stone-400 max-w-2xl mx-auto">
-              From concept to deployment, I provide comprehensive development services 
+              From concept to deployment, I provide comprehensive development services
               tailored to bring your ideas to life with modern technologies and best practices.
             </p>
           </motion.div>
@@ -523,7 +523,7 @@ export default function Home() {
                 iconColor: "#fff",
                 icon: (
                   <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
                   </svg>
                 ),
                 title: "Full Stack Development",
@@ -534,7 +534,7 @@ export default function Home() {
                 iconColor: "#fff",
                 icon: (
                   <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+                    <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" />
                   </svg>
                 ),
                 title: "Artificial Intelligence",
@@ -545,7 +545,7 @@ export default function Home() {
                 iconColor: "#fff",
                 icon: (
                   <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/>
+                    <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z" />
                   </svg>
                 ),
                 title: "Cloud & Deployment",
@@ -556,7 +556,7 @@ export default function Home() {
                 iconColor: "#fff",
                 icon: (
                   <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
                   </svg>
                 ),
                 title: "Custom ERP Solutions",
@@ -569,7 +569,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                whileHover={{ 
+                whileHover={{
                   y: -8,
                   transition: { duration: 0.3 }
                 }}
@@ -589,17 +589,17 @@ export default function Home() {
                       </div>
                     </motion.div>
                   </div>
-                  
+
                   {/* Title */}
                   <h3 className="text-2xl font-bold text-stone-900 dark:text-stone-100 mb-6 text-center group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                     {service.title}
                   </h3>
-                  
+
                   {/* Description */}
                   <p className="text-stone-600 dark:text-stone-400 leading-relaxed text-center">
                     {service.description}
                   </p>
-                  
+
                   {/* Subtle hover effect */}
                   <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                 </div>
@@ -660,14 +660,14 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <p className="text-lg text-stone-600 dark:text-stone-400 mb-6">
-                Hi, I&apos;m Vuk Papić, a passionate Full-stack with a knack for 
-                crafting seamless digital experiences. With a strong background in both frontend 
+                Hi, I&apos;m Vuk Papić, a passionate Full-stack with a knack for
+                crafting seamless digital experiences. With a strong background in both frontend
                 and backend development, I thrive in the intersection where creativity meets technology.
               </p>
               <p className="text-lg text-stone-600 dark:text-stone-400 mb-8">
-                Over the years, I&apos;ve honed my skills in building robust, user-friendly applications 
-                that not only meet the needs of users but also push the boundaries of what&apos;s possible. 
-                My projects range from innovative web applications to responsive designs, all with a 
+                Over the years, I&apos;ve honed my skills in building robust, user-friendly applications
+                that not only meet the needs of users but also push the boundaries of what&apos;s possible.
+                My projects range from innovative web applications to responsive designs, all with a
                 focus on performance, security, and scalability.
               </p>
               <div className="flex space-x-6">
@@ -686,8 +686,8 @@ export default function Home() {
               viewport={{ once: true }}
               className="aspect-square bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800 rounded-2xl overflow-hidden flex items-center justify-center"
             >
-              <Image 
-                src="/profile/IMG_5212.jpg" 
+              <Image
+                src="/profile/IMG_5212.jpg"
                 alt="Vuk Papić"
                 width={400}
                 height={400}
@@ -723,10 +723,10 @@ export default function Home() {
               Let&apos;s Work Together
             </h2>
             <p className="text-xl text-stone-600 dark:text-stone-400 mb-8 max-w-2xl mx-auto">
-              Have a project in mind? I&apos;d love to hear about it. Let&apos;s create something amazing together.
+              Have a project in mind? Let&apos;s discuss how we can design and deliver an innovative solution together.
             </p>
             <motion.a
-              href="mailto:paicvuk17@gmail.com"
+              href="mailto:papicvuk17@gmail.com"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center px-8 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors font-medium"
