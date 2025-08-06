@@ -152,7 +152,7 @@ export default function Home() {
              Full-stack Developer
             </h1>
             <p className="text-xl text-stone-600 dark:text-stone-400 max-w-2xl mx-auto mb-8">
-              Developer based in Eurpe. I specialize in UI design, web and mobile 
+              Developer based in Europe. I specialize in UI design, web and mobile 
               application development and maintenance.
             </p>
             <motion.a
@@ -431,7 +431,7 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <p className="text-lg text-stone-600 dark:text-stone-400 mb-6">
-                Hi, I&apos;m Vuk Papić, a passionate Web and Mobile Developer with a knack for 
+                Hi, I&apos;m Vuk Papić, a passionate Full-stack with a knack for 
                 crafting seamless digital experiences. With a strong background in both frontend 
                 and backend development, I thrive in the intersection where creativity meets technology.
               </p>
