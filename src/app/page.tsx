@@ -413,21 +413,30 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-                className="group cursor-pointer flex flex-col h-[calc(100vw-3rem)] md:h-[calc(50vw-5rem)] max-h-[400px] rounded-3xl p-6 border border-stone-200 dark:border-stone-600 hover:border-blue-300 dark:hover:border-blue-500 transition-all duration-300"
+                whileHover={{ 
+                  y: -8, 
+                  scale: 1.02,
+                  transition: { duration: 0.2 }
+                }}
+                whileTap={{ scale: 0.98 }}
+                className="group cursor-pointer flex flex-col h-[calc(100vw-3rem)] md:h-[calc(50vw-5rem)] max-h-[400px] rounded-3xl p-6 border-2 border-stone-200 dark:border-stone-600 hover:border-blue-400 dark:hover:border-blue-400 hover:shadow-xl hover:shadow-blue-100 dark:hover:shadow-blue-900/20 transition-all duration-300 transform-gpu"
                 style={{ backgroundColor: project.backgroundColor }}
                 onClick={() => window.location.href = `/projects/${project.slug}`}
               >
                 {/* Project Image */}
-                <div className="aspect-square rounded-2xl overflow-hidden mb-4 flex-1">
+                <div className="aspect-square rounded-2xl overflow-hidden mb-4 flex-1 relative">
                   {project.image ? (
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      width={400}
-                      height={400}
-                      className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-300 p-4"
-                    />
+                    <>
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        width={400}
+                        height={400}
+                        className="w-full h-full object-contain object-center group-hover:scale-110 transition-transform duration-500 p-4"
+                      />
+                      {/* Overlay for better clickability */}
+                      <div className="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/5 transition-colors duration-300 rounded-2xl"></div>
+                    </>
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-stone-400 dark:text-stone-500 bg-stone-100 dark:bg-stone-700">
                       <div className="text-center">
@@ -441,9 +450,20 @@ export default function Home() {
                 </div>
 
                 {/* Project Name */}
-                <h3 className="text-xl font-semibold text-stone-900 dark:text-stone-100 text-center group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors h-[2.5rem] flex items-center justify-center flex-shrink-0">
-                  {project.title}
-                </h3>
+                <div className="relative">
+                  <h3 className="text-xl font-semibold text-blue-600 dark:text-blue-400 text-center group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors duration-300 h-[2.5rem] flex items-center justify-center flex-shrink-0">
+                    {project.title}
+                  </h3>
+                  {/* Click indicator */}
+                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="flex items-center space-x-1 text-xs text-blue-600 dark:text-blue-400">
+                      <span>Click to view</span>
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -687,10 +707,10 @@ export default function Home() {
               className="aspect-square bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800 rounded-2xl overflow-hidden flex items-center justify-center"
             >
               <Image
-                src="/profile/IMG_5212.jpg"
+                src="/profile/IMG_PROFILE.jpg"
                 alt="Vuk Papić"
-                width={400}
-                height={400}
+                width={250}
+                height={300}
                 className="w-full h-full object-cover"
                 onError={(e) => {
                   // Fallback if image doesn't exist
@@ -740,10 +760,62 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="py-8 px-6 border-t border-stone-200 dark:border-stone-700">
-        <div className="max-w-6xl mx-auto text-center">
-          <p className="text-stone-600 dark:text-stone-400">
-            © 2025 Vuk Papić. Designed & Developed
-          </p>
+        <div className="max-w-6xl mx-auto">
+          {/* Social Links */}
+          <div className="flex justify-center space-x-6 mb-6">
+            <motion.a
+              href="https://github.com/Vukp17"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="text-stone-600 dark:text-stone-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            >
+              <Github className="w-6 h-6" />
+            </motion.a>
+            <motion.a
+              href="https://www.linkedin.com/in/vuk-papi%C4%87-1b77b3187/"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="text-stone-600 dark:text-stone-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            >
+              <Linkedin className="w-6 h-6" />
+            </motion.a>
+            <motion.a
+              href="https://www.upwork.com/freelancers/~015cb7d0f4131554bd?mp_source=share"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="text-stone-600 dark:text-stone-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            >
+              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3.006-2.439-5.458-5.439-5.458z" />
+              </svg>
+            </motion.a>
+          </div>
+
+          {/* Email Display */}
+          <div className="text-center mb-6">
+            <motion.a
+              href="mailto:papicvuk17@gmail.com"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center space-x-2 text-stone-600 dark:text-stone-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            >
+              <Mail className="w-5 h-5" />
+              <span className="text-lg">papicvuk17@gmail.com</span>
+            </motion.a>
+          </div>
+          
+          {/* Copyright */}
+          <div className="text-center">
+            <p className="text-stone-600 dark:text-stone-400">
+              © 2025 Vuk Papić. Designed & Developed
+            </p>
+          </div>
         </div>
       </footer>
     </div>
