@@ -707,7 +707,7 @@ export default function Home() {
               className="aspect-square bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800 rounded-2xl overflow-hidden flex items-center justify-center"
             >
               <Image
-                src="/profile/IMG_PROFILE.jpg"
+                src="/profile/IMG_5212.jpg"
                 alt="Vuk Papić"
                 width={250}
                 height={300}
