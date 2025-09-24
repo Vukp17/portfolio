@@ -713,7 +713,6 @@ export default function Home() {
                 height={300}
                 className="w-full h-full object-cover"
                 onError={(e) => {
-                  // Fallback if image doesn't exist
                   e.currentTarget.style.display = 'none';
                   const fallback = e.currentTarget.nextElementSibling as HTMLElement;
                   if (fallback) fallback.style.display = 'flex';
