@@ -430,9 +430,15 @@ export default function Home() {
                       <Image
                         src={project.image}
                         alt={project.title}
-                        width={400}
-                        height={400}
+                        width={800}
+                        height={800}
+                        quality={95}
+                        priority={index < 2}
+                        sizes="(max-width: 768px) 100vw, 50vw"
                         className="w-full h-full object-contain object-center group-hover:scale-110 transition-transform duration-500 p-4"
+                        style={{
+                          imageRendering: 'crisp-edges',
+                        }}
                       />
                       {/* Overlay for better clickability */}
                       <div className="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/5 transition-colors duration-300 rounded-2xl"></div>
@@ -707,10 +713,13 @@ export default function Home() {
               className="aspect-square bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800 rounded-2xl overflow-hidden flex items-center justify-center"
             >
               <Image
-                src="/profile/IMG_5212.jpg"
+                src="/profile/profile.jpg"
                 alt="Vuk Papić"
-                width={250}
-                height={300}
+                width={600}
+                height={600}
+                quality={95}
+                priority={true}
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="w-full h-full object-cover"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
