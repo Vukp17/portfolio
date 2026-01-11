@@ -80,6 +80,28 @@ const projects = [
       "Driver management tools",
       "Route optimization"
     ]
+  },
+  {
+    id: 5,
+    title: "Uphive",
+    description: "A browser extension to turn Upwork leads into contracts with client insights and proposal templates",
+    fullDescription: "Uphive is a powerful browser extension designed to transform Upwork leads into contracts. It streamlines client management by capturing client insights including name, website, budget, and location. The extension provides professional proposal and contract templates, an automated lead database, opportunity tracking, and reduces administrative work by up to 80% with seamless one-click Upwork integration.",
+    image: "/projects/uphive.png",
+    images: ["/projects/uphive.png"],
+    tags: ["JavaScript", "Chrome Extension", "React"],
+    live: "https://uphive.app",
+    video: "",
+    slug: "uphive",
+    features: [
+      "Client insights capture - name, website, budget, location",
+      "Professional proposal and contract templates",
+      "Automated lead database with search and filter",
+      "Real-time opportunity tracking",
+      "Dynamic placeholder variables for personalization",
+      "Reduces admin work by 80%",
+      "Seamless one-click Upwork integration",
+      "Works directly within Upwork platform"
+    ]
   }
 ];
 

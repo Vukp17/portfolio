@@ -80,6 +80,18 @@ const projects = [
     video: "", // Add video URL when available
     slug: "sledat",
     backgroundColor: "#d9d9d9"
+  },
+  {
+    id: 5,
+    title: "Uphive",
+    description: "A browser extension to turn Upwork leads into contracts with client insights and proposal templates",
+    image: "/projects/uphive.png",
+    tags: ["JavaScript", "Chrome Extension", "React"],
+    github: "",
+    live: "https://uphive.app",
+    video: "",
+    slug: "uphive",
+    backgroundColor: "#ffffff"
   }
 ];
 
