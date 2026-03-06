@@ -1,31 +1,45 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fafaf9;
-  --foreground: #1c1c1c;
-  --muted: #f5f5f4;
-  --muted-foreground: #6b7280;
-  --border: #e5e7eb;
-  --accent: #3b82f6;
-  --accent-light: #dbeafe;
+  --background: #f8f9fa;
+  --surface-light: #f8f9fa;
+  --foreground: #212529;
+  --muted: #eef1f4;
+  --muted-foreground: #4b5563;
+  --border: #e6e9ed;
+  --accent: #0056d2;
+  --accent-hover: #0047ae;
+  --cta: #ff6600;
+  --cta-hover: #e55c00;
+  --dark-surface: #0a1128;
+  --dark-surface-soft: #111b36;
+  --accent-light: #e7f0ff;
+  --card-shadow: 0 10px 20px rgba(10, 17, 40, 0.08);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0f0f0f;
-    --foreground: #f5f5f5;
-    --muted: #1a1a1a;
-    --muted-foreground: #9ca3af;
-    --border: #2a2a2a;
-    --accent: #60a5fa;
-    --accent-light: #1e3a8a;
+    --background: #0a1128;
+    --surface-light: #111b36;
+    --foreground: #f8f9fa;
+    --muted: #111b36;
+    --muted-foreground: #c3ccda;
+    --border: #2d3748;
+    --accent: #66a3ff;
+    --accent-hover: #8bb8ff;
+    --cta: #ff6600;
+    --cta-hover: #ff8c42;
+    --dark-surface: #0a1128;
+    --dark-surface-soft: #111b36;
+    --accent-light: #17376f;
+    --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-poppins), system-ui, sans-serif;
   line-height: 1.6;
 }
 
@@ -39,4 +53,44 @@ html {
 
 .gradient-bg {
   background: linear-gradient(135deg, var(--background) 0%, var(--muted) 100%);
+}
+
+.section-light {
+  background: var(--surface-light, #f8f9fa);
+}
+
+.section-dark {
+  background: var(--dark-surface);
+  color: #f8f9fa;
+}
+
+.card-floating {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  box-shadow: var(--card-shadow);
+  border-radius: 16px;
+}
+
+.btn-primary {
+  background: var(--cta);
+  color: #ffffff;
+  border-radius: 8px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: var(--cta-hover);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
 }
